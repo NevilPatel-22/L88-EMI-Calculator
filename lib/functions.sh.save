@@ -1,0 +1,124 @@
+#!/bin/bash
+# lib/functions.sh – EMI Calculator
+# Write ALL functions here. main.sh loads this file with: source lib/functions.sh
+DATA="data/loans.csv"
+
+LOG="logs/activity.log"
+
+# TODO: log  -> write one line "date time | message" into $LOG
+#        hint: date, echo, >>
+log() {
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | $1" >> "$LOG"
+}
+
+# TODO: check_data -> if $DATA does not exist, print a message and return 1
+#        hint: file test operators (-e, -f, -d)
+check_data() {
+    if [ ! -f "$DATA" ]; then
+	echo "loan data file not found!"
+	return 1
+    fi
+    return 0 
+}
+
+# TODO: show_help -> print how to use ./main.sh, ./main.sh --help, --backup, --cron
+show_help() {
+    echo "TODO: write the help text"
+}
+
+# TODO: view_data -> show the data file with line numbers (or list the folder)
+#        hint: cat -n, more, ls -l
+view_data() {
+    echo "TODO: show the data"
+}
+
+# TODO: do_backup -> create backups/data_<date_time>.tar.gz of the data/ folder
+#        hint: tar -czf, date +%Y%m%d_%H%M%S, du -h
+do_backup() {
+    echo "TODO: make a backup"
+}
+
+# TODO: view_log -> show the last 15 lines of $LOG
+#        hint: tail
+view_log() {
+    echo "TODO: show the log"
+}
+
+# ------------------------------------------------------------
+# FEATURE 1: Take principal, rate and months as command-line arguments or input
+# Commands you can use: $1 $2 $3, bc -l, while loop, printf
+# Hints (see Step 5 of your guide):
+#   - Columns in your data file are separated by a comma: item, principal, rate, months, emi.
+#   - Ask the user what to search for with read -p.
+#   - Search the data file with grep (ignore upper/lower case).
+#   - If nothing is found, show a friendly message (check the exit status $?).
+#   - Show only the columns that matter (cut or awk).
+# ------------------------------------------------------------
+feature_1() {
+    echo "TODO: Take principal, rate and months as command-line arguments or input"
+}
+
+# ------------------------------------------------------------
+# FEATURE 2: Calculate EMI with bc -l
+# Commands you can use: $1 $2 $3, bc -l, while loop, printf
+# Hints (see Step 6 of your guide):
+#   - Columns in your data file are separated by a comma: item, principal, rate, months, emi.
+#   - Use awk with the right field separator to read the number column (principal is column 2).
+#   - Skip the header line (it is line 1).
+#   - Add the values (and count them if you need an average) and print the result neatly with printf.
+#   - For decimals in bash use bc (scale=2).
+# ------------------------------------------------------------
+feature_2() {
+    echo "TODO: Calculate EMI with bc -l"
+}
+
+# ------------------------------------------------------------
+# FEATURE 3: Print the month-by-month table (interest, principal, balance)
+# Commands you can use: $1 $2 $3, bc -l, while loop, printf
+# Hints (see Step 7 of your guide):
+#   - Columns in your data file are separated by a comma: item, principal, rate, months, emi.
+#   - Collect the output of your commands in one block.
+#   - Write it into the reports/ folder; put today's date in the file name (date command).
+#   - Use > to create the file and >> to add more lines.
+#   - Tell the user the file name that was saved.
+# ------------------------------------------------------------
+feature_3() {
+    echo "TODO: Print the month-by-month table (interest, principal, balance)"
+}
+
+# ------------------------------------------------------------
+# FEATURE 4: Compare two loan options
+# Commands you can use: $1 $2 $3, bc -l, while loop, printf
+# Hints (see Step 8 of your guide):
+#   - Columns in your data file are separated by a comma: item, principal, rate, months, emi.
+#   - Ask the user what to search for with read -p.
+#   - Search the data file with grep (ignore upper/lower case).
+#   - If nothing is found, show a friendly message (check the exit status $?).
+#   - Show only the columns that matter (cut or awk).
+# ------------------------------------------------------------
+feature_4() {
+    echo "TODO: Compare two loan options"
+}
+
+# ------------------------------------------------------------
+# FEATURE 5: Save the result to loans.csv
+# Commands you can use: $1 $2 $3, bc -l, while loop, printf
+# Hints (see Step 9 of your guide):
+#   - Columns in your data file are separated by a comma: item, principal, rate, months, emi.
+#   - Collect the output of your commands in one block.
+#   - Write it into the reports/ folder; put today's date in the file name (date command).
+#   - Use > to create the file and >> to add more lines.
+#   - Tell the user the file name that was saved.
+# ------------------------------------------------------------
+feature_5() {
+    echo "TODO: Save the result to loans.csv"
+}
+
+# ------------------------------------------------------------
+# CRON TASK: Every 1st of the month at 9 AM, write an 'EMI due' reminder to reminders.txt
+# This runs when crontab calls:  ./main.sh --cron
+# Write the output into reports/ or a file, and log it.
+# ------------------------------------------------------------
+cron_task() {
+    echo "TODO: Every 1st of the month at 9 AM, write an 'EMI due' reminder to reminders.txt"
+}
